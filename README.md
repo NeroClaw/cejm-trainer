@@ -1,5 +1,9 @@
 # CEJM E4 · Trainer BTS SIO
 
+**🔗 En ligne :** https://neroclaw.github.io/cejm-trainer/ · **📦 Code :** https://github.com/NeroClaw/cejm-trainer
+
+---
+
 Trainer de révision pour l'épreuve **E4 « Culture économique, juridique et managériale pour l'informatique » (CEJMI)** du BTS SIO.
 
 ## Sources
