@@ -714,6 +714,7 @@
         '<a class="btn btn--primary" href="#/s/' + next.id + '">Reprendre ici</a>' +
         '<a class="btn" href="#/revision">Révision mixte</a>' +
         '<a class="btn" href="#/lecture">Lecture continue</a>' +
+        '<a class="btn" href="#/recap">Récap par thème</a>' +
         '<a class="btn" href="#/carnet">Mon carnet</a>' +
       '</div></div>';
 
@@ -891,8 +892,8 @@
 
     html += '<footer class="lecend"><p>Fin du cours. Les ateliers et la révision mixte restent dans le menu.</p>' +
       '<div class="card__actions">' +
-        '<a class="btn btn--primary" href="#/revision">Révision mixte</a>' +
-        '<a class="btn" href="#/">Accueil</a>' +
+        '<a class="btn btn--primary" href="#/recap">Récap par thème</a>' +
+        '<a class="btn" href="#/revision">Révision mixte</a>' +
       '</div></footer>';
 
     el("view").innerHTML = html;
@@ -922,11 +923,54 @@
     paintCode(el("view"));
   }
 
+  /* ---------- récap express par thème ---------- */
+  function viewRecap() {
+    el("crumb").textContent = "Récap par thème";
+    markActiveNav("");
+
+    var html = '<header class="sechead">' +
+      '<span class="sechead__num">RÉCAP EXPRESS</span>' +
+      '<h1>Une fiche par thème, sans couper l’essentiel.</h1>' +
+      '<div class="sechead__meta">' +
+        '<span class="pill">' + RECAP.length + ' fiches</span>' +
+        '<span class="pill">5 à 8 notions clés chacune</span>' +
+      '</div>' +
+      '<p style="margin-block-start:var(--space-4);color:var(--ink-2);max-width:68ch">Chaque fiche donne la logique du thème, les notions qui tombent et les pièges à éviter. Pour le texte complet, les cartes dépliées et les ateliers, passe par la lecture continue.</p>' +
+      '<div class="card__actions" style="margin-block-start:var(--space-4)">' +
+        '<a class="btn btn--primary" href="#/lecture">Lecture continue</a>' +
+        '<a class="btn" href="#/revision">Révision mixte</a>' +
+      '</div></header>';
+
+    RECAP.forEach(function (r) {
+      html += '<article class="recapsec">' +
+        '<h2><span class="recapsec__num">' + esc(r.num) + '</span>' + esc(r.title) + '</h2>' +
+        '<p class="recapsec__tldr">' + esc(r.tldr) + '</p>' +
+        '<ul class="recapsec__points">';
+      r.points.forEach(function (pt) { html += '<li>' + pt + '</li>'; });
+      html += '</ul>';
+      if (r.pieges && r.pieges.length) {
+        html += '<p class="recapsec__pieges"><span class="recapsec__label">Pièges</span>' +
+          r.pieges.map(function (x) { return esc(x); }).join(' · ') + '</p>';
+      }
+      html += '<p class="recapsec__link"><a href="#/s/' + r.id + '">ouvrir la section complète →</a></p>' +
+        '</article>';
+    });
+
+    html += '<footer class="lecend"><p>Fin du récap. Les cartes et les ateliers restent dans les sections.</p>' +
+      '<div class="card__actions">' +
+        '<a class="btn btn--primary" href="#/lecture">Lecture continue</a>' +
+        '<a class="btn" href="#/">Accueil</a>' +
+      '</div></footer>';
+
+    el("view").innerHTML = html;
+  }
+
   /* ---------- routeur ---------- */
   function route() {
     var hash = location.hash.replace(/^#/, "");
     var parts = hash.split("/").filter(Boolean);
 
+    if (parts[0] === "recap") { viewRecap(); return; }
     if (parts[0] === "lecture") { viewLecture(); return; }
     if (parts[0] === "revision") { viewRevision(); return; }
     if (parts[0] === "carnet") { viewCarnet(); return; }

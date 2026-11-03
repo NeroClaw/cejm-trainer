@@ -1367,6 +1367,223 @@ Diagnostic interne : la base de 600 clients fidèles et le savoir-faire métier 
   ]
 },
 
+/* ============================== 06 bis ============================== */
+{
+  id: "06b-equilibre-financier",
+  num: "06 bis",
+  title: "L’équilibre financier : bilan, FR, BFR, trésorerie",
+  tag: "Économie · analyse financière",
+  hot: true,
+  intro: "Bilan, fonds de roulement, besoin en fonds de roulement, trésorerie nette : quatre notions qui reviennent dans presque tous les sujets et qui se ramassent avec un calcul juste et trois phrases d’interprétation. Un FR positif ne veut pas dire « il y a de l’argent », une trésorerie négative ne veut pas dire « faillite ».",
+  cours: `
+  <h2>1. Le bilan : une photographie, pas un film</h2>
+  <p>Le bilan décrit le <strong>patrimoine à une date de clôture</strong>. Deux colonnes, toujours égales : à gauche les <strong>emplois</strong> (à quoi l’argent a servi), à droite les <strong>ressources</strong> (d’où il vient). Le compte de résultat, lui, raconte l’année : produits moins charges. Confondre les deux est la faute la plus coûteuse en E4.</p>
+  <table class="tbl">
+    <caption>Structure simplifiée d’un bilan</caption>
+    <thead><tr><th>Actif (les emplois)</th><th>Passif (les ressources)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Actif immobilisé</strong> : incorporel (brevet, logiciel, fonds commercial), corporel (terrain, construction, matériel), financier (titres, dépôts de garantie)</td><td><strong>Capitaux propres</strong> : capital social, réserves, report à nouveau, résultat de l’exercice</td></tr>
+      <tr><td><strong>Actif circulant</strong> : stocks, créances clients, autres créances, valeurs mobilières de placement</td><td><strong>Amortissements, dépréciations et provisions</strong></td></tr>
+      <tr><td><strong>Trésorerie actif</strong> : banque, caisse</td><td><strong>Dettes financières à plus d’un an</strong> : emprunts, crédit-bail</td></tr>
+      <tr><td></td><td><strong>Passif circulant</strong> : dettes fournisseurs, dettes fiscales et sociales, autres dettes</td></tr>
+      <tr><td></td><td><strong>Trésorerie passif</strong> : concours bancaires courants, découvert</td></tr>
+    </tbody>
+  </table>
+  <div class="callout callout--warn">
+    <span class="callout__label">Piège comptable à connaître</span>
+    <p>Selon la présentation retenue, les <strong>amortissements et dépréciations</strong> figurent au passif (système de base) ou sont déduits de l’actif (bilan « net »). Les deux lectures sont justes tant qu’on ne les compte pas deux fois. Dans un sujet, garde la présentation du document et signale-la.</p>
+  </div>
+  <p><strong>Total actif = total passif</strong> par construction. Ce n’est donc <em>pas</em> un indicateur de santé : un bilan peut être parfaitement équilibré et l’entreprise au bord du dépôt de bilan.</p>
+
+  <h2>2. Emplois stables et ressources stables : le fonds de roulement</h2>
+  <ul>
+    <li><strong>Emplois stables</strong> = actif immobilisé net. Ce qui est engagé durablement dans l’outil de production.</li>
+    <li><strong>Ressources stables</strong> = <strong>capitaux permanents</strong> = capitaux propres + amortissements et dépréciations + provisions + dettes financières à plus d’un an.</li>
+    <li><strong>Fonds de roulement net global (FR)</strong> = ressources stables − emplois stables.</li>
+  </ul>
+  <p>Lecture : le FR est la <strong>part des ressources longues qui reste disponible pour financer le cycle d’exploitation</strong> une fois les immobilisations payées.</p>
+  <ul>
+    <li>FR &gt; 0 : les emplois stables sont couverts, et une partie du cycle aussi. Sain dans son principe.</li>
+    <li>FR = 0 : les ressources longues financent exactement les immobilisations ; tout le cycle repose sur du court terme.</li>
+    <li>FR &lt; 0 : des <strong>immobilisations sont financées par des dettes à court terme</strong>. Déséquilibre structurel, quel que soit le résultat de l’année.</li>
+  </ul>
+
+  <h2>3. Le besoin en fonds de roulement : le décalage du cycle</h2>
+  <p>Le cycle d’exploitation (acheter, stocker, produire, vendre, encaisser) se déroule <strong>avant</strong> que les clients paient, alors que les fournisseurs sont souvent réglés plus tôt. Ce décalage crée un besoin de financement.</p>
+  <pre class="codeblock"><code class="lang-text">BFR = actif circulant d'exploitation - passif circulant d'exploitation
+    = (stocks + créances clients + autres créances)
+    - (dettes fournisseurs + dettes fiscales et sociales + autres dettes)
+
+Version courte, celle qu'on écrit en copie :
+BFR = stocks + créances clients - dettes fournisseurs</code></pre>
+  <ul>
+    <li><strong>BFR &gt; 0</strong> : il faut financer stocks et créances. Industrie, BTP, conseil facturé à 60 jours.</li>
+    <li><strong>BFR &lt; 0</strong> : le cycle <em>génère</em> de la trésorerie. Grande distribution (stocks payés après la vente), abonnements et acomptes encaissés d’avance, éditeur de logiciel en SaaS.</li>
+    <li><strong>BFR en jours de chiffre d’affaires</strong> = (BFR / CA HT) × 360. Et par construction : BFR en jours ≈ délai de stockage + délai clients − délai fournisseurs.</li>
+  </ul>
+  <p>C’est le seul des trois indicateurs vraiment pilotable au quotidien : chaque jour gagné sur le délai client ou sur la rotation des stocks réduit mécaniquement le besoin.</p>
+
+  <h2>4. La trésorerie nette : le résultat des deux</h2>
+  <pre class="codeblock"><code class="lang-text">Trésorerie nette (TN) = FR - BFR
+Contrôle comptable     = trésorerie actif - trésorerie passif (concours bancaires)</code></pre>
+  <p>Les deux calculs donnent <strong>toujours le même résultat</strong>. Si un écart apparaît, il y a une erreur de calcul : c’est le meilleur moyen de vérifier une copie avant de rendre.</p>
+  <table class="tbl">
+    <caption>Les trois situations à savoir commenter</caption>
+    <thead><tr><th>Situation</th><th>Interprétation</th></tr></thead>
+    <tbody>
+      <tr><td>TN &gt; 0</td><td>Marge de sécurité. L’entreprise absorbe un retard de paiement ou un surstock sans passer en découvert.</td></tr>
+      <tr><td>TN ≈ 0</td><td>Équilibre au plus juste : aucun coussin, la moindre tension se transforme en découvert.</td></tr>
+      <tr><td>TN &lt; 0</td><td>Le BFR dépasse le FR : le cycle est financé par des concours bancaires. Dépendance à la banque, coût financier, rupture possible si le crédit est retiré. Ce n’est pas synonyme de faillite : c’est un signal de fragilité, parfois saisonnier.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>5. Un bilan chiffré, de bout en bout</h2>
+  <table class="tbl">
+    <caption>Bilan au 31/12/N, en euros</caption>
+    <thead><tr><th>Actif</th><th>Montant</th><th>Passif</th><th>Montant</th></tr></thead>
+    <tbody>
+      <tr><td>Actif immobilisé net</td><td>300 000</td><td>Capital, réserves, résultat</td><td>220 000</td></tr>
+      <tr><td>Stocks</td><td>80 000</td><td>Amortissements et provisions</td><td>50 000</td></tr>
+      <tr><td>Créances clients</td><td>120 000</td><td>Emprunt à plus d’un an</td><td>100 000</td></tr>
+      <tr><td>Trésorerie actif</td><td>15 000</td><td>Dettes fournisseurs</td><td>105 000</td></tr>
+      <tr><td></td><td></td><td>Dettes fiscales et sociales</td><td>30 000</td></tr>
+      <tr><td></td><td></td><td>Concours bancaires courants</td><td>10 000</td></tr>
+      <tr><td><strong>Total</strong></td><td><strong>515 000</strong></td><td><strong>Total</strong></td><td><strong>515 000</strong></td></tr>
+    </tbody>
+  </table>
+  <ol>
+    <li><strong>Capitaux permanents</strong> = 220 000 + 50 000 + 100 000 = <strong>370 000</strong>.</li>
+    <li><strong>FR</strong> = 370 000 − 300 000 = <strong>70 000</strong>.</li>
+    <li><strong>BFR</strong> = (80 000 + 120 000) − (105 000 + 30 000) = <strong>65 000</strong>.</li>
+    <li><strong>TN</strong> = 70 000 − 65 000 = <strong>5 000</strong>. Contrôle : 15 000 − 10 000 = 5 000. ✔</li>
+    <li><strong>BFR en jours</strong> : CA HT de 900 000, donc (65 000 / 900 000) × 360 = <strong>26 jours</strong> de chiffre d’affaires.</li>
+    <li><strong>Autonomie financière</strong> = 220 000 / 515 000 = <strong>42,7 %</strong>. <strong>Endettement</strong> = 100 000 / 220 000 = <strong>45,5 %</strong>. <strong>Liquidité générale</strong> = 215 000 / 145 000 = <strong>1,48</strong>.</li>
+  </ol>
+  <div class="callout callout--key">
+    <span class="callout__label">Le commentaire qui rapporte les points</span>
+    <p>« L’équilibre est respecté au 31/12 : les ressources stables couvrent les emplois stables et le besoin du cycle, avec une trésorerie nette positive de 5 000 €. Mais cette marge représente environ deux jours de chiffre d’affaires : elle est quasi inexistante. Dix jours de délai client supplémentaires représenteraient 30 000 € de créances de plus, porteraient le BFR à 95 000 € et la trésorerie à −25 000 €, donc en découvert. La structure est saine, la gestion du cycle est fragile. »</p>
+  </div>
+
+  <h2>6. Les ratios et les délais à savoir calculer</h2>
+  <table class="tbl">
+    <caption>Formules et lecture</caption>
+    <thead><tr><th>Indicateur</th><th>Formule</th><th>Lecture</th></tr></thead>
+    <tbody>
+      <tr><td>Autonomie financière</td><td>capitaux propres / total du bilan</td><td>Part du patrimoine financée sur fonds propres. Sous 30 %, la dépendance aux financements externes est forte.</td></tr>
+      <tr><td>Endettement (levier)</td><td>dettes financières / capitaux propres</td><td>Au-delà de 1, l’endettement dépasse les fonds propres : capacité de remboursement à surveiller.</td></tr>
+      <tr><td>Liquidité générale</td><td>(actif circulant + trésorerie actif) / (passif circulant + concours bancaires)</td><td>Capacité à payer le court terme avec ce qui est réalisable à court terme. Sous 1, tension.</td></tr>
+      <tr><td>Délai clients (DSO)</td><td>(créances clients TTC / CA TTC) × 360</td><td>Nombre de jours de CA que représentent les créances. À comparer au délai contractuel.</td></tr>
+      <tr><td>Délai de stockage (DIO)</td><td>(stocks / achats HT) × 360</td><td>Durée moyenne d’immobilisation des stocks.</td></tr>
+      <tr><td>Délai fournisseurs (DPO)</td><td>(dettes fournisseurs TTC / achats TTC) × 360</td><td>Crédit obtenu des fournisseurs. Un DPO long améliore la trésorerie mais peut masquer une dépendance.</td></tr>
+      <tr><td>BFR en jours</td><td>(BFR / CA HT) × 360</td><td>Équivalent du besoin exprimé en jours d’activité : lisible et comparable d’une année sur l’autre.</td></tr>
+    </tbody>
+  </table>
+  <div class="callout callout--warn">
+    <span class="callout__label">HT ou TTC</span>
+    <p>Les créances clients et les dettes fournisseurs du bilan sont <strong>TTC</strong> (TVA incluse), le chiffre d’affaires du compte de résultat est <strong>HT</strong>. Mélanger les deux fausse le délai de 20 % : dans un sujet, écris la conversion, même mentalement (CA TTC = CA HT × 1,20).</p>
+  </div>
+
+  <h2>7. Rétablir l’équilibre : trois leviers, trois horizons</h2>
+  <ul>
+    <li><strong>Agir sur le FR (structure, plusieurs mois)</strong> : augmentation de capital, apport en compte courant d’associé, emprunt à long terme, autofinancement par le résultat, cession d’actifs non stratégiques, subventions, crédit-bail (usage plutôt que propriété).</li>
+    <li><strong>Agir sur le BFR (exploitation, quelques semaines)</strong> : réduire les stocks (rotation, déstockage), réduire le délai client (relances, prélèvement SEPA, escompte pour paiement anticipé, acomptes à la commande), négocier le délai fournisseurs, affacturage (efficace mais coûteux et partiellement transféré au client).</li>
+    <li><strong>Agir sur la TN (court terme, immédiat)</strong> : découvert autorisé négocié, ligne de crédit, escompte d’effets. Cela <strong>traite le symptôme</strong> et gagne du temps, jamais la cause.</li>
+  </ul>
+  <p>En copie, hiérarchise : le découvert est une solution de continuité, pas une solution d’équilibre.</p>
+
+  <h2>8. Les huit pièges qui coûtent des points</h2>
+  <ol>
+    <li><strong>FR ≠ trésorerie disponible.</strong> Le FR mesure une ressource durable, pas de l’argent en banque.</li>
+    <li><strong>Amortissement ≠ nouvelle ressource encaissée.</strong> C’est l’étalement comptable d’une dépense déjà faite ; il améliore la capacité d’autofinancement, pas la trésorerie du jour.</li>
+    <li><strong>Résultat bénéficiaire ≠ trésorerie positive.</strong> Un client qui ne paie pas laisse un produit comptabilisé et zéro euro en banque.</li>
+    <li><strong>BFR négatif ≠ automatiquement bon.</strong> S’il vient d’un DPO de 120 jours, c’est de la dépendance aux fournisseurs.</li>
+    <li><strong>Un emprunt long finance des emplois stables</strong>, pas un stock. Financer un surstock par un emprunt de 7 ans, c’est payer des intérêts longtemps pour un besoin saisonnier.</li>
+    <li><strong>TN négative n’est pas une faillite.</strong> Elle indique un financement du cycle par la banque, parfois saisonnier.</li>
+    <li><strong>Ne jamais additionner capitaux propres et dettes financières</strong> en oubliant amortissements et provisions quand la présentation les place au passif.</li>
+    <li><strong>Une photo, pas une tendance.</strong> Un bilan au 31/12 peut masquer une tension de trésorerie de septembre : sans variation annuelle ni saisonnalité, la conclusion reste prudente.</li>
+  </ol>
+
+  <h2>9. Le lien avec les métiers SIO</h2>
+  <ul>
+    <li>Un <strong>logiciel développé en interne</strong> est une immobilisation incorporelle, amortie sur 3 à 5 ans : il pèse sur le FR avant de produire des économies.</li>
+    <li>Un <strong>abonnement SaaS</strong> est une charge de l’exercice : pas de FR mobilisé, mais une dépendance contractuelle et un coût récurrent.</li>
+    <li>Un projet <strong>ERP ou infrastructure</strong> se juge donc sur deux plans : le coût total de possession et l’effet sur l’équilibre financier (FR si internalisé, BFR si facturation décalée).</li>
+  </ul>
+  `,
+  cards: [
+    { id: "f1", q: "Que représentent l’actif et le passif du bilan ?", a: "L’<strong>actif</strong> recense les emplois (à quoi l’argent a servi : immobilisations, stocks, créances, trésorerie). Le <strong>passif</strong> recense les ressources (d’où vient l’argent : capitaux propres, amortissements et provisions, dettes financières, dettes d’exploitation)." },
+    { id: "f2", q: "Total actif = total passif : est-ce le signe d’une bonne santé financière ?", a: "Non. L’égalité est une <strong>identité comptable</strong>, vraie par construction. Un bilan équilibré peut cacher un FR négatif, un BFR incontrôlé et une trésorerie en découvert." },
+    { id: "f3", q: "Qu’est-ce qu’un emploi stable ?", a: "L’<strong>actif immobilisé net</strong> : immobilisations incorporelles (brevet, logiciel, fonds commercial), corporelles (terrain, construction, matériel) et financières. Ce qui est engagé durablement, pas pour un cycle d’exploitation." },
+    { id: "f4", q: "Que contiennent les capitaux permanents ?", a: "Capitaux propres + amortissements et dépréciations + provisions + <strong>dettes financières à plus d’un an</strong>. Ce sont les ressources stables." },
+    { id: "f5", q: "Formule du fonds de roulement net global ?", a: "<strong>FR = ressources stables − emplois stables</strong>, soit capitaux permanents − actif immobilisé net. Il mesure la part des ressources longues disponible pour financer le cycle." },
+    { id: "f6", q: "Que signifie un FR négatif ?", a: "Les <strong>immobilisations sont financées par des dettes à court terme</strong> : déséquilibre structurel. L’entreprise rembourse du long terme avec du court terme, ce qui la rend dépendante de ses banques, indépendamment de son résultat." },
+    { id: "f7", q: "Formule du BFR ?", a: "<strong>BFR = actif circulant d’exploitation − passif circulant d’exploitation</strong>, soit (stocks + créances clients + autres créances) − (dettes fournisseurs + dettes fiscales et sociales + autres dettes). Version courte : stocks + créances clients − dettes fournisseurs." },
+    { id: "f8", q: "Un BFR négatif est-il toujours une bonne nouvelle ?", a: "Non. Il peut venir d’encaissements d’avance (SaaS, grande distribution : excellent) ou d’un <strong>délai fournisseurs anormalement long</strong>, qui traduit une dépendance et un risque de rupture d’approvisionnement." },
+    { id: "f9", q: "Formule de la trésorerie nette, et son contrôle ?", a: "<strong>TN = FR − BFR</strong>. Contrôle comptable : <strong>trésorerie actif − trésorerie passif</strong> (concours bancaires). Les deux résultats doivent être identiques ; sinon, erreur de calcul." },
+    { id: "f10", q: "Une TN négative signifie-t-elle la faillite ?", a: "Non. Elle signifie que le BFR dépasse le FR : le cycle est financé par des <strong>concours bancaires</strong>. C’est un signal de fragilité et de dépendance, parfois seulement saisonnier." },
+    { id: "f11", q: "Un résultat bénéficiaire garantit-il une trésorerie positive ?", a: "Non. Les produits comptabilisés ne sont pas tous encaissés (créances clients), les stocks immobilisent du cash et les investissements ou remboursements d’emprunt sortent sans passer par le résultat." },
+    { id: "f12", q: "Les amortissements sont-ils une ressource nouvelle ?", a: "Non : ils étalent comptablement une dépense déjà engagée. Ils figurent au passif comme ressource stable et améliorent la <strong>capacité d’autofinancement</strong>, mais n’apportent aucun euro en banque le jour du calcul." },
+    { id: "f13", q: "Comment financer un BFR durablement ?", a: "Par des <strong>ressources stables</strong> (fonds propres, emprunt long) ou en le réduisant. Le découvert ne finance que la pointe saisonnière : l’utiliser pour un besoin permanent revient à financer du long terme avec du court terme." },
+    { id: "f14", q: "Effet d’un allongement du délai client sur FR, BFR et TN ?", a: "Les créances augmentent : <strong>BFR augmente</strong>, <strong>TN diminue</strong> du même montant, le <strong>FR est inchangé</strong> (il ne dépend pas du cycle)." },
+    { id: "f15", q: "FR = 120 000 et BFR = 150 000 : conclusion ?", a: "TN = <strong>−30 000</strong> : le cycle est financé à hauteur de 30 000 € par des concours bancaires. Il faut soit augmenter le FR (ressources stables), soit réduire le BFR de 30 000 € (stocks, délai client)." },
+    { id: "f16", q: "Deux ratios de structure à citer systématiquement ?", a: "<strong>Autonomie financière</strong> = capitaux propres / total du bilan (sous 30 %, dépendance forte) et <strong>endettement</strong> = dettes financières / capitaux propres (au-delà de 1, capacité de remboursement à surveiller)." },
+    { id: "f17", q: "Que mesure la liquidité générale, et quel seuil ?", a: "(actif circulant + trésorerie) / (passif circulant + concours bancaires). <strong>Au-dessous de 1</strong>, l’entreprise ne peut pas honorer son court terme avec ce qu’elle réalisera à court terme." },
+    { id: "f18", q: "Comment exprime-t-on le BFR en jours, et à quoi ça sert ?", a: "(BFR / CA HT) × 360. Cela donne un besoin en jours d’activité, comparable d’un exercice à l’autre et indépendant de la taille de l’entreprise. Ordre de grandeur : BFR en jours ≈ délai de stockage + délai clients − délai fournisseurs." },
+    { id: "f19", q: "Deux erreurs de financement classiques à relever dans un sujet ?", a: "Financer un <strong>stock saisonnier</strong> par un emprunt à long terme (coût inutile) et financer une <strong>immobilisation</strong> par du découvert (déséquilibre structurel). Le principe : les emplois durables se financent par des ressources durables." },
+    { id: "f20", q: "Pourquoi le bilan seul ne suffit-il pas à conclure ?", a: "C’est une <strong>photographie à une date</strong>. Sans l’exercice précédent ni l’information sur la saisonnalité, on ne distingue pas une tension ponctuelle d’une dégradation durable." }
+  ],
+  ateliers: [
+    {
+      id: "at-fin-calcul",
+      title: "Calculer FR, BFR et trésorerie nette",
+      lang: "text",
+      prompt: `<p><strong>Bilan au 31/12/N (en euros).</strong></p>
+      <ul>
+        <li>Actif immobilisé net : 300 000</li>
+        <li>Stocks : 80 000 · Créances clients : 120 000 · Trésorerie actif : 15 000</li>
+        <li>Capitaux propres : 220 000 · Amortissements et provisions : 50 000 · Emprunt à plus d’un an : 100 000</li>
+        <li>Dettes fournisseurs : 105 000 · Dettes fiscales et sociales : 30 000 · Concours bancaires : 10 000</li>
+        <li>Chiffre d’affaires HT de l’exercice : 900 000</li>
+      </ul>
+      <p>Calcule les <strong>capitaux permanents</strong>, le <strong>FR</strong>, le <strong>BFR</strong>, la <strong>TN</strong> (avec son contrôle), le <strong>BFR en jours de CA</strong>, puis rédige un <strong>diagnostic de quatre lignes</strong> et l’effet de 10 jours de délai client supplémentaires.</p>`,
+      starter: `1. Capitaux permanents
+220 000 + 50 000 + 100 000 = ...
+
+2. FR
+...
+`,
+      checks: [
+        { label: "Capitaux permanents = 370 000", test: /370\s?000/ },
+        { label: "FR = 70 000", test: /70\s?000/ },
+        { label: "BFR = 65 000", test: /65\s?000/ },
+        { label: "TN = 5 000 avec le contrôle (15 000 - 10 000)", test: /5\s?000/ },
+        { label: "BFR en jours calculé (26 jours)", test: /2[56]\s?jours|26\s?j/i },
+        { label: "Effet des 10 jours clients : TN devient -25 000", test: /-?\s?25\s?000/ },
+        { label: "Le diagnostic conclut sur une marge faible / fragile", test: /fragile|faible|inexistant|tendue/i }
+      ]
+    },
+    {
+      id: "at-fin-leviers",
+      title: "Diagnostiquer et proposer trois leviers",
+      lang: "text",
+      prompt: `<p><strong>Situation.</strong> Une PME de services informatiques (18 salariés) présente au 31/12 : FR = 40 000 €, BFR = 95 000 €, TN = −55 000 €. Le délai client moyen est de <strong>72 jours</strong> alors que le contrat prévoit 30 jours. Les stocks sont faibles (matériel revendu), les dettes fournisseurs sont réglées à 30 jours. Le résultat de l’exercice est bénéficiaire de 45 000 €.</p>
+      <p>Rédige en une dizaine de lignes : (1) le <strong>diagnostic</strong> en mobilisant FR, BFR, TN ; (2) le lien entre le résultat bénéficiaire et la trésorerie négative ; (3) <strong>trois leviers</strong> classés par horizon, avec leur effet attendu et leur limite.</p>`,
+      starter: `1. Diagnostic
+FR = 40 000, BFR = 95 000, donc TN = ...
+`,
+      checks: [
+        { label: "Les trois indicateurs sont cités et reliés (FR, BFR, TN)", test: /FR|fonds de roulement/i },
+        { label: "Le BFR est identifié comme excessif du fait du délai client", test: /client|créance|DSO|72/i },
+        { label: "Le décalage produit/encaissement explique le bénéfice sans cash", test: /encaiss|bénéfice|résultat/i },
+        { label: "Un levier sur le BFR est proposé (relances, escompte, acompte)", test: /relance|escompte|acompte|affacturage/i },
+        { label: "Un levier sur le FR est proposé (capital, emprunt long, cession)", test: /capital|emprunt|cession|autofinancement/i },
+        { label: "Le découvert est présenté comme provisoire, pas comme solution", test: /découvert|concours bancaire/i },
+        { label: "Une limite ou un coût par levier est mentionné", test: /coût|limite|risque|dépendance/i }
+      ]
+    }
+  ]
+},
+
 /* ============================== 07 ============================== */
 {
   id: "07-redaction",
@@ -1524,4 +1741,165 @@ Conclusion : le contrat risque d'être requalifié en contrat de travail. L'entr
   ateliers: []
 }
 
+];
+
+/* Récap express par thème : une fiche courte par section, pour relire sans couper l'essentiel.
+   Le détail complet reste dans chaque section et dans la lecture continue (#/lecture). */
+const RECAP = [
+  {
+    id: "00-methode",
+    num: "00",
+    title: "Méthode de l’épreuve",
+    tldr: "La note se gagne autant sur la structure que sur le fond.",
+    points: [
+      "<strong>Lire les questions avant les annexes</strong> : elles disent quoi chercher. Classer chaque question en éco, droit ou management.",
+      "Structure en quatre temps : <strong>qualification → règle → application aux faits cités → conclusion</strong>. La règle s’énonce avant d’être appliquée.",
+      "Une idée = une ligne numérotée. Une question à 4 points appelle environ quatre idées distinctes.",
+      "Budget : 15 min de repérage, 3 h de rédaction, 10 min de relecture ciblée. Jamais de question vide : trois lignes valent mieux que rien.",
+      "Le correcteur est professeur de CEJM, pas informaticien : il note la rigueur de la démonstration, pas la pertinence technique de la solution."
+    ],
+    pieges: ["Paraphraser le document", "Confondre chiffre d’affaires et bénéfice", "Oublier la conclusion juridique"]
+  },
+  {
+    id: "01-integration",
+    num: "01",
+    title: "Intégration de l’entreprise dans son environnement",
+    tldr: "Qui entoure l’entreprise, comment elle échange et comment elle contracte.",
+    points: [
+      "<strong>Agents économiques</strong> (ménages, entreprises, administrations, institutions financières, reste du monde) reliés par des flux réels et monétaires.",
+      "<strong>Marché</strong> : offre, demande, prix d’équilibre. Concurrence pure et parfaite = cinq conditions ; sinon monopole, oligopole, concurrence monopolistique.",
+      "<strong>Barrières à l’entrée</strong> et <strong>asymétrie d’information</strong> : sélection adverse (avant contrat) et aléa moral (après).",
+      "<strong>Externalités</strong> : effet sur un tiers hors marché, positif ou négatif. Internalisation par taxe, subvention, réglementation ou marché de droits.",
+      "Financement : <strong>banques</strong> (crédit, création monétaire) et <strong>marché financier</strong> (actions, obligations).",
+      "<strong>Contrat</strong> : formation (offre et acceptation), validité (consentement, capacité, contenu licite et certain), effets (force obligatoire, effet relatif).",
+      "<strong>Finalités, parties prenantes, performance</strong> : économique, financière, sociale et sociétale ; la RSE traduit cet élargissement."
+    ],
+    pieges: ["Externalité ≠ coût supporté par l’entreprise", "Chiffre d’affaires ≠ bénéfice", "Contrat valable ≠ contrat exécuté"]
+  },
+  {
+    id: "02-regulation",
+    num: "02",
+    title: "Régulation de l’activité économique",
+    tldr: "L’État corrige, redistribue, régule, et le droit encadre la concurrence.",
+    points: [
+      "<strong>Trois rôles de l’État</strong> : allocation des ressources, redistribution, régulation (la stabilisation s’y ajoute).",
+      "<strong>Déséquilibres</strong> : inflation, chômage, déficit extérieur, dette publique. Chacun a ses indicateurs et ses causes distinctes.",
+      "<strong>Politiques conjoncturelles</strong> (budgétaire, monétaire, horizon 1-3 ans) contre <strong>politiques structurelles</strong> (offre, compétitivité, horizon long).",
+      "<strong>Autorités administratives indépendantes</strong> : elles régulent sans tutelle gouvernementale (concurrence, marchés financiers, données).",
+      "<strong>Droit de la concurrence</strong> : ententes, abus de position dominante, contrôle des concentrations.",
+      "<strong>Propriété industrielle</strong> : brevet (20 ans, nouveauté, activité inventive, application industrielle) et marque (10 ans renouvelables).",
+      "<strong>PESTEL</strong> pour balayer le macro-environnement : politique, économique, socioculturel, technologique, environnemental, légal."
+    ],
+    pieges: ["Politique de relance ≠ politique de rigueur", "Brevet et marque ne protègent pas la même chose", "Un taux qui baisse de 5 % à 4 % perd 1 point, pas 20 %"]
+  },
+  {
+    id: "03-organisation",
+    num: "03",
+    title: "Organisation de l’activité de l’entreprise",
+    tldr: "Produire au meilleur coût, décider de faire ou faire-faire, choisir sa structure juridique.",
+    points: [
+      "<strong>Facteurs de production</strong> : travail, capital, matières premières, connaissances. <strong>Productivité</strong> = production / facteur employé, toujours avec son unité.",
+      "<strong>Charges fixes / variables</strong>, marge sur coût variable, <strong>seuil de rentabilité</strong> = charges fixes / taux de MSCV. <strong>Point mort</strong> = seuil / CA × 12.",
+      "<strong>Chaîne de valeur</strong> (Porter) : activités principales et activités de soutien ; elle localise où se crée la marge.",
+      "<strong>Faire ou faire-faire</strong> : externalisation (activité entière, durable) contre sous-traitance (production ponctuelle). Coûts de transaction, dépendance, perte de savoir-faire.",
+      "<strong>Structures juridiques</strong> : EI (responsabilité illimitée), SARL (limitée aux apports), SAS (capital libre, statuts souples), SA (37 000 € minimum).",
+      "<strong>Responsabilité</strong> : civile contractuelle, civile extracontractuelle (faute, dommage, lien de causalité), pénale (personnelle).",
+      "Organisation des ressources : structure fonctionnelle, divisionnelle, matricielle, par projet."
+    ],
+    pieges: ["Production ≠ productivité", "Seuil de rentabilité ≠ point mort", "Choisir une structure sur le seul critère fiscal"]
+  },
+  {
+    id: "04-numerique",
+    num: "04",
+    title: "Impact du numérique sur la vie de l’entreprise",
+    tldr: "Plateformes, données, normes : le numérique change les marchés et crée des obligations.",
+    points: [
+      "<strong>Plateformes</strong> : effets de réseau directs et croisés, <strong>externalités de réseau</strong>, marchés bifaces, logique de winner-takes-all.",
+      "<strong>Économie collaborative</strong> : mise en relation d’offre et de demande entre particuliers, avec la question du statut des travailleurs.",
+      "<strong>Normes et standards</strong> : interopérabilité et confiance d’un côté, verrouillage et coûts de sortie de l’autre.",
+      "<strong>RGPD</strong> : principes de finalité, minimisation, durée limitée, sécurité ; droits d’accès, de rectification, d’effacement, de portabilité ; notification d’une violation sous 72 h.",
+      "<strong>Actifs immatériels</strong> : brevet, marque, secret des affaires, droit d’auteur sur le logiciel (le code est protégé sans dépôt).",
+      "<strong>Preuve et identité numériques</strong> : signature électronique, horodatage, valeur probante.",
+      "<strong>Vente en ligne</strong> : information précontractuelle, CGV, droit de rétractation de 14 jours (avec exceptions), obligations de conformité.",
+      "<strong>SI et management</strong> : le système d’information alimente la décision et doit être aligné sur la stratégie."
+    ],
+    pieges: ["Confondre anonymisation et pseudonymisation", "Croire que le RGPD interdit tout traitement", "Oublier les exceptions au droit de rétractation"]
+  },
+  {
+    id: "05-travail",
+    num: "05",
+    title: "Les mutations du travail",
+    tldr: "Un contrat, un lien de subordination, une procédure : trois réflexes juridiques.",
+    points: [
+      "<strong>Marché du travail</strong> : offre et demande de travail, salaire d’équilibre, chômage conjoncturel ou structurel, rôle des qualifications.",
+      "<strong>Sources du droit du travail</strong> : Code du travail, convention collective, accord d’entreprise, contrat, usages. Le principe de faveur arbitre les conflits de normes.",
+      "<strong>Salarié ou indépendant</strong> : le critère décisif est le <strong>lien de subordination</strong> (ordres, contrôle, sanctions), apprécié par un faisceau d’indices.",
+      "<strong>Contrats</strong> : CDI comme norme ; CDD avec motif, terme et prime de précarité ; intérim, alternance, temps partiel.",
+      "<strong>Modification du contrat</strong> (accord du salarié requis) contre <strong>changement des conditions de travail</strong> (pouvoir de direction).",
+      "<strong>Rupture</strong> : démission, licenciement pour motif personnel ou économique, rupture conventionnelle, faute grave ou lourde. La procédure conditionne la validité.",
+      "<strong>Dialogue social</strong> : CSE, délégués syndicaux, négociation obligatoire, formation et gestion des compétences."
+    ],
+    pieges: ["Confondre modification du contrat et conditions de travail", "Licenciement sans motif = sans cause réelle et sérieuse", "Un CDD sans motif écrit est requalifié en CDI"]
+  },
+  {
+    id: "06-strategie",
+    num: "06",
+    title: "Les choix stratégiques",
+    tldr: "Diagnostiquer, choisir, mettre en œuvre : et savoir rattacher la décision au SI.",
+    points: [
+      "<strong>Démarche</strong> : diagnostic externe et interne, définition des options, décision, mise en œuvre, contrôle.",
+      "<strong>PESTEL</strong> pour l’externe, <strong>forces de Porter</strong> (concurrence, clients, fournisseurs, entrants, substituts) pour l’industrie, <strong>SWOT</strong> pour la synthèse.",
+      "<strong>Interne</strong> : ressources et compétences, critère VRIN (valeur, rareté, inimitabilité, non-substituabilité), chaîne de valeur.",
+      "<strong>Options</strong> : spécialisation ou diversification, intégration amont/aval, alliances, internationalisation, domination par les coûts ou différenciation.",
+      "<strong>Modalités de croissance</strong> : interne (investissement), externe (fusion, acquisition), conjointe (partenariat, joint-venture).",
+      "<strong>Avantage concurrentiel</strong> : il se construit par domaine d’activité stratégique et doit être défendable.",
+      "<strong>Lien SIO</strong> : le SI devient un levier d’avantage concurrentiel (données, automatisation, expérience client) et un objet de décision stratégique."
+    ],
+    pieges: ["Diagnostic sans conclusion", "Confondre croissance externe et croissance conjointe", "Oublier le coût d’intégration d’une acquisition"]
+  },
+  {
+    id: "06b-equilibre-financier",
+    num: "06 bis",
+    title: "Équilibre financier : bilan, FR, BFR, TN",
+    tldr: "Trois calculs et un contrôle : c’est le bloc le plus rentable de l’épreuve.",
+    points: [
+      "<strong>Bilan</strong> : actif = emplois (immobilisé, circulant, trésorerie), passif = ressources (capitaux propres, amortissements et provisions, dettes financières, passif circulant, concours bancaires). Total égal par construction, sans signification sur la santé.",
+      "<strong>Capitaux permanents</strong> = capitaux propres + amortissements et provisions + dettes financières à plus d’un an.",
+      "<strong>FR = ressources stables − emplois stables</strong>. Négatif = immobilisations financées à court terme : déséquilibre structurel.",
+      "<strong>BFR = (stocks + créances) − (dettes fournisseurs + dettes fiscales et sociales)</strong>. Positif = besoin à financer ; négatif = ressource, parfois par dépendance fournisseurs.",
+      "<strong>TN = FR − BFR</strong>, à vérifier par <strong>trésorerie actif − concours bancaires</strong>. Négative = découvert, dépendance bancaire, pas faillite.",
+      "<strong>BFR en jours</strong> = (BFR / CA HT) × 360 ; par construction ≈ délai stockage + délai clients − délai fournisseurs.",
+      "Leviers : <strong>FR</strong> (capital, emprunt long, autofinancement, cession), <strong>BFR</strong> (relances, stocks, acomptes, délais fournisseurs), <strong>TN</strong> (découvert = symptôme, jamais solution)."
+    ],
+    pieges: ["FR ≠ argent disponible", "Résultat bénéficiaire ≠ trésorerie positive", "Mélanger HT et TTC dans les délais"]
+  },
+  {
+    id: "07-redaction",
+    num: "07",
+    title: "Rédiger et qualifier",
+    tldr: "Les mots justes et les calculs justes valent des points mécaniques.",
+    points: [
+      "La <strong>chaîne en quatre temps</strong> (qualification, règle, application, conclusion) vaut dans les trois disciplines.",
+      "Employer le <strong>mot du programme</strong> : contrat synallagmatique, vice du consentement, externalité négative, politique structurelle, DAS, partie prenante.",
+      "Exploiter un chiffre : <strong>taux de variation</strong> = (V1 − V0) / V0 × 100, <strong>coefficient multiplicateur</strong> = V1 / V0, <strong>points de pourcentage</strong> pour une différence de taux.",
+      "Toujours donner <strong>l’unité</strong> et comparer à une référence (année précédente, concurrent, moyenne du secteur).",
+      "Soigner les <strong>connecteurs</strong> (en premier lieu, en revanche, par conséquent) et bannir les formulations qui coûtent (« je pense que », « on peut voir que »)."
+    ],
+    pieges: ["Un chiffre sans interprétation", "Un calcul sans unité", "Une conclusion absente"]
+  },
+  {
+    id: "08-pieges",
+    num: "08",
+    title: "Les pièges de l’épreuve",
+    tldr: "Six réflexes de relecture sauvent plusieurs points.",
+    points: [
+      "Chaque question commençant par « justifier », « montrer », « analyser » exige une <strong>démonstration</strong>, pas une affirmation.",
+      "Chaque <strong>calcul</strong> porte son unité (euros, %, points de pourcentage, jours) et sa date.",
+      "Aucune question vide : trois lignes structurées valent toujours mieux que zéro.",
+      "Le <strong>document</strong> se cite (annexe, chiffre, citation courte) : sans référence, la réponse est jugée hors sujet.",
+      "La <strong>conclusion</strong> répond à la question posée, pas à une autre plus intéressante.",
+      "Relecture ciblée : numérotation homogène, sigles définis une fois, orthographe des termes techniques."
+    ],
+    pieges: ["Recopier le document", "Répondre en vocabulaire courant", "Oublier de répondre à la question finale du dossier"]
+  }
 ];
