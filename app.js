@@ -944,8 +944,17 @@
     RECAP.forEach(function (r) {
       html += '<article class="recapsec">' +
         '<h2><span class="recapsec__num">' + esc(r.num) + '</span>' + esc(r.title) + '</h2>' +
-        '<p class="recapsec__tldr">' + esc(r.tldr) + '</p>' +
-        '<ul class="recapsec__points">';
+        '<p class="recapsec__tldr">' + esc(r.tldr) + '</p>';
+      if (r.table) html += r.table;
+      if (r.calculs) {
+        html += '<table class="tbl tbl--calcs"><caption>' + esc(r.calculs.caption) + '</caption>' +
+          '<thead><tr><th>Étape</th><th>Formule, puis application chiffrée</th></tr></thead><tbody>';
+        r.calculs.rows.forEach(function (row) {
+          html += '<tr><td class="tbl__step"><strong>' + esc(row[0]) + '</strong></td><td>' + row[1] + '</td></tr>';
+        });
+        html += '</tbody></table>';
+      }
+      html += '<ul class="recapsec__points">';
       r.points.forEach(function (pt) { html += '<li>' + pt + '</li>'; });
       html += '</ul>';
       if (r.pieges && r.pieges.length) {
@@ -963,6 +972,7 @@
       '</div></footer>';
 
     el("view").innerHTML = html;
+    wrapTables(el("view"));
   }
 
   /* ---------- routeur ---------- */

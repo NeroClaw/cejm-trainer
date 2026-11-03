@@ -1861,14 +1861,40 @@ const RECAP = [
     id: "06b-equilibre-financier",
     num: "06 bis",
     title: "Équilibre financier : bilan, FR, BFR, TN",
-    tldr: "Trois calculs et un contrôle : c’est le bloc le plus rentable de l’épreuve.",
+    tldr: "Un tableau, trois calculs, un contrôle. Le bloc le plus rentable de l’épreuve.",
+    table: `
+    <table class="tbl tbl--split">
+      <caption>Le bilan, poste par poste, et le calcul où il intervient</caption>
+      <thead><tr><th>Poste</th><th>Catégorie</th><th>Calcul</th></tr></thead>
+      <tbody>
+        <tr class="tbl__group"><td colspan="3">Actif · les emplois</td></tr>
+        <tr><td>Immobilisations nettes</td><td>Emploi stable</td><td>FR</td></tr>
+        <tr><td>Stocks</td><td>Actif circulant d’exploitation</td><td>BFR</td></tr>
+        <tr><td>Créances clients</td><td>Actif circulant d’exploitation</td><td>BFR</td></tr>
+        <tr><td>Banque, caisse</td><td>Trésorerie actif</td><td>Contrôle TN</td></tr>
+        <tr class="tbl__group"><td colspan="3">Passif · les ressources</td></tr>
+        <tr><td>Capital, réserves, résultat</td><td>Capitaux propres</td><td>FR</td></tr>
+        <tr><td>Amortissements et provisions</td><td>Ressource stable</td><td>FR</td></tr>
+        <tr><td>Emprunts à plus d’un an</td><td>Dette financière stable</td><td>FR</td></tr>
+        <tr><td>Dettes fournisseurs, fiscales et sociales</td><td>Passif circulant d’exploitation</td><td>BFR (en moins)</td></tr>
+        <tr><td>Concours bancaires, découvert</td><td>Trésorerie passif</td><td>Contrôle TN</td></tr>
+      </tbody>
+    </table>`,
+    calculs: {
+      caption: "Les calculs, dans cet ordre (bilan de 515 000 €, CA HT de 900 000 €)",
+      rows: [
+        ["1. Capitaux permanents", "<span class='calc__f'>capitaux propres + amortissements et provisions + dettes financières à plus d’un an</span><span class='calc__r'>220 000 + 50 000 + 100 000 = <strong>370 000</strong></span>"],
+        ["2. FR", "<span class='calc__f'>capitaux permanents - actif immobilisé net</span><span class='calc__r'>370 000 - 300 000 = <strong>70 000</strong></span>"],
+        ["3. BFR", "<span class='calc__f'>(stocks + créances clients) - (dettes fournisseurs + dettes fiscales et sociales)</span><span class='calc__r'>(80 000 + 120 000) - (105 000 + 30 000) = <strong>65 000</strong></span>"],
+        ["4. TN", "<span class='calc__f'>FR - BFR, contrôlé par trésorerie actif - concours bancaires</span><span class='calc__r'>70 000 - 65 000 = <strong>5 000</strong> · contrôle 15 000 - 10 000 = 5 000 ✔</span>"],
+        ["5. BFR en jours", "<span class='calc__f'>(BFR / CA HT) x 360</span><span class='calc__r'>(65 000 / 900 000) x 360 = <strong>26 jours</strong></span>"]
+      ]
+    },
     points: [
-      "<strong>Bilan</strong> : actif = emplois (immobilisé, circulant, trésorerie), passif = ressources (capitaux propres, amortissements et provisions, dettes financières, passif circulant, concours bancaires). Total égal par construction, sans signification sur la santé.",
-      "<strong>Capitaux permanents</strong> = capitaux propres + amortissements et provisions + dettes financières à plus d’un an.",
-      "<strong>FR = ressources stables − emplois stables</strong>. Négatif = immobilisations financées à court terme : déséquilibre structurel.",
-      "<strong>BFR = (stocks + créances) − (dettes fournisseurs + dettes fiscales et sociales)</strong>. Positif = besoin à financer ; négatif = ressource, parfois par dépendance fournisseurs.",
-      "<strong>TN = FR − BFR</strong>, à vérifier par <strong>trésorerie actif − concours bancaires</strong>. Négative = découvert, dépendance bancaire, pas faillite.",
-      "<strong>BFR en jours</strong> = (BFR / CA HT) × 360 ; par construction ≈ délai stockage + délai clients − délai fournisseurs.",
+      "<strong>FR &gt; 0</strong> : les ressources longues couvrent les immobilisations et une part du cycle. <strong>FR &lt; 0</strong> : des immobilisations sont financées par du court terme, déséquilibre structurel.",
+      "<strong>BFR &gt; 0</strong> = besoin à financer. <strong>BFR &lt; 0</strong> = ressource (SaaS, grande distribution), ou dépendance aux fournisseurs si elle vient d’un délai de paiement anormalement long.",
+      "<strong>TN &lt; 0</strong> : le cycle est financé par la banque. Signal de fragilité et de dépendance, pas une faillite, parfois seulement saisonnier.",
+      "Sur un an, <strong>BFR en jours ≈ délai de stockage + délai clients - délai fournisseurs</strong> : c’est le seul levier vraiment pilotable.",
       "Leviers : <strong>FR</strong> (capital, emprunt long, autofinancement, cession), <strong>BFR</strong> (relances, stocks, acomptes, délais fournisseurs), <strong>TN</strong> (découvert = symptôme, jamais solution)."
     ],
     pieges: ["FR ≠ argent disponible", "Résultat bénéficiaire ≠ trésorerie positive", "Mélanger HT et TTC dans les délais"]
