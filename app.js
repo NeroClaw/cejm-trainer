@@ -106,6 +106,18 @@
     return out;
   }
 
+  function wrapTables(root) {
+    var tables = root.querySelectorAll("table.tbl");
+    for (var i = 0; i < tables.length; i++) {
+      var t = tables[i];
+      if (t.parentNode && t.parentNode.classList.contains("tablewrap")) continue;
+      var box = document.createElement("div");
+      box.className = "tablewrap";
+      t.parentNode.insertBefore(box, t);
+      box.appendChild(t);
+    }
+  }
+
   function paintCode(root) {
     var nodes = root.querySelectorAll("code[class^='lang-']");
     for (var i = 0; i < nodes.length; i++) {
@@ -246,6 +258,7 @@
       });
     }
 
+    wrapTables(el("view"));
     paintCode(el("view"));
   }
 
@@ -557,6 +570,7 @@
       viewRevision();
     });
 
+    wrapTables(el("view"));
     paintCode(el("view"));
   }
 
@@ -640,6 +654,7 @@
     }
 
     el("view").innerHTML = html;
+    wrapTables(el("view"));
     paintCode(el("view"));
 
     el("exportMd").addEventListener("click", function () { downloadMd(entries); });
@@ -679,8 +694,8 @@
       '<span class="sechead__num">E4 · CEJMI</span>' +
       '<h1>Quatre heures, deux dossiers, des points qui se ramassent à la ligne.</h1>' +
       '<div class="sechead__meta">' +
-        '<span class="pill pill--hot">Épreuve du 03/11/2026</span>' +
-        '<span class="pill">15 sections</span>' +
+        '<span class="pill pill--hot">BTS blanc · 04/11 · 8 h</span>' +
+        '<span class="pill">' + DATA.length + ' sections</span>' +
         '<span class="pill">' + totalCards + ' cartes</span>' +
         '<span class="pill">' + totalAteliers + ' ateliers</span>' +
       '</div></header>';
@@ -698,6 +713,7 @@
       '<div class="card__actions" style="margin:0">' +
         '<a class="btn btn--primary" href="#/s/' + next.id + '">Reprendre ici</a>' +
         '<a class="btn" href="#/revision">Révision mixte</a>' +
+        '<a class="btn" href="#/lecture">Lecture continue</a>' +
         '<a class="btn" href="#/carnet">Mon carnet</a>' +
       '</div></div>';
 
@@ -713,6 +729,7 @@
       '</div>';
 
     el("view").innerHTML = html;
+    wrapTables(el("view"));
     paintCode(el("view"));
   }
 
@@ -820,11 +837,97 @@
     });
   }
 
+  /* ---------- lecture continue (tout le cours, une page) ---------- */
+  function viewLecture() {
+    el("crumb").textContent = "Lecture continue";
+    markActiveNav("");
+
+    var totalCards = 0;
+    DATA.forEach(function (sec) { totalCards += (sec.cards || []).length; });
+
+    var html = '<header class="sechead">' +
+      '<span class="sechead__num">LECTURE CONTINUE</span>' +
+      '<h1>Tout le cours, une seule page.</h1>' +
+      '<div class="sechead__meta">' +
+        '<span class="pill">' + DATA.length + ' sections</span>' +
+        '<span class="pill">' + totalCards + ' cartes</span>' +
+        '<span class="pill">zéro clic</span>' +
+      '</div>' +
+      '<p style="margin-block-start:var(--space-4);color:var(--ink-2);max-width:68ch">Tu scrolles, tu ne cliques pas. Les cartes sont dépliées sous chaque cours. Pour travailler vraiment une section (ateliers, quiz, cochage), ouvre-la depuis le menu.</p>' +
+      '</header>';
+
+    html += '<nav class="lectoc" aria-label="Sommaire de la lecture continue">';
+    DATA.forEach(function (sec) {
+      html += '<button type="button" class="lectoc__chip" data-go="lec-' + sec.id + '">' +
+        '<span class="lectoc__num">' + esc(sec.num) + '</span> ' + esc(sec.title) + '</button>';
+    });
+    html += '</nav>';
+
+    DATA.forEach(function (sec) {
+      var cards = sec.cards || [];
+      html += '<article class="lecsec" id="lec-' + sec.id + '">' +
+        '<h2><span class="lecsec__num">' + esc(sec.num) + '</span>' + esc(sec.title) + '</h2>' +
+        '<p class="lecsec__meta"><span class="pill' + (sec.hot ? ' pill--hot' : '') + '">' + esc(sec.tag) + '</span>' +
+          '<a class="lecsec__link" href="#/s/' + sec.id + '">travailler cette section →</a></p>' +
+        '<p class="lecsec__intro">' + esc(sec.intro) + '</p>' +
+        '<div class="doc">' + (sec.cours || "") + '</div>';
+
+      if (cards.length) {
+        html += '<h3 class="lecsec__h3">À retenir — ' + cards.length + ' cartes</h3><ul class="leccards">';
+        cards.forEach(function (c) {
+          html += '<li><p class="q">' + c.q + '</p><p class="a">' + c.a + '</p></li>';
+        });
+        html += '</ul>';
+      }
+
+      if ((sec.ateliers || []).length) {
+        html += '<p class="lecsec__ateliers">' + sec.ateliers.length + ' atelier(s) auto-corrigé(s) dans cette section : ' +
+          '<a href="#/s/' + sec.id + '">ouvrir</a></p>';
+      }
+
+      html += '<p class="lecsec__top"><button type="button" class="lectoc__chip" data-top="1">↑ sommaire</button></p>' +
+        '</article>';
+    });
+
+    html += '<footer class="lecend"><p>Fin du cours. Les ateliers et la révision mixte restent dans le menu.</p>' +
+      '<div class="card__actions">' +
+        '<a class="btn btn--primary" href="#/revision">Révision mixte</a>' +
+        '<a class="btn" href="#/">Accueil</a>' +
+      '</div></footer>';
+
+    el("view").innerHTML = html;
+
+    var view = el("view");
+    if (!view.dataset.lecBound) {
+      view.dataset.lecBound = "1";
+      view.addEventListener("click", function (ev) {
+      var go = ev.target.closest("[data-go]");
+      if (go) {
+        var target = document.getElementById(go.dataset.go);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          target.setAttribute("tabindex", "-1");
+          target.focus({ preventScroll: true });
+        }
+        return;
+      }
+      if (ev.target.closest("[data-top]")) {
+        var toc = document.querySelector(".lectoc");
+        if (toc) toc.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      });
+    }
+
+    wrapTables(el("view"));
+    paintCode(el("view"));
+  }
+
   /* ---------- routeur ---------- */
   function route() {
     var hash = location.hash.replace(/^#/, "");
     var parts = hash.split("/").filter(Boolean);
 
+    if (parts[0] === "lecture") { viewLecture(); return; }
     if (parts[0] === "revision") { viewRevision(); return; }
     if (parts[0] === "carnet") { viewCarnet(); return; }
 
