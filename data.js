@@ -1568,26 +1568,39 @@ Contrôle comptable     = trésorerie actif - trésorerie passif (concours banca
 370 000 - 300 000 = 70 000
 
 3. BFR
-(80 000 + 120 000) - (105 000 + 30 000) = 200 000 - 135 000 = 65 000
+(80 000 + 120 000)
+- (105 000 + 30 000)
+= 200 000 - 135 000 = 65 000
 
 4. TN
 FR - BFR = 70 000 - 65 000 = 5 000
-Contrôle : trésorerie actif - concours bancaires = 15 000 - 10 000 = 5 000 ✔
+Contrôle : 15 000 - 10 000 = 5 000 ✔
 
 5. BFR en jours de CA
 (65 000 / 900 000) x 360 = 26 jours
 
-Diagnostic en quatre lignes
-- Les ressources stables (370 000) couvrent les immobilisations (300 000) et laissent 70 000 pour le cycle : l'équilibre structurel est respecté.
-- Le cycle immobilise 65 000, soit 26 jours de CA, et il est couvert par le FR.
-- La trésorerie nette n'est positive que de 5 000, moins de deux jours de CA : la marge de sécurité est quasi nulle.
-- La structure est saine mais tendue : aucune marge de manœuvre, tout allongement du délai client passe directement en découvert.
+Diagnostic
+- Ressources stables : 370 000.
+  Elles couvrent les 300 000
+  d'immobilisations et laissent
+  70 000 pour le cycle :
+  structure saine.
+- Le cycle immobilise 65 000,
+  soit 26 jours de CA, couvert
+  par le FR.
+- TN = 5 000, moins de deux
+  jours de CA : marge quasi
+  nulle.
+- Saine mais tendue : tout
+  allongement du délai client
+  passe en découvert.
 
-Effet de 10 jours de délai client supplémentaires
-10 jours de CA = (900 000 / 360) x 10 = 25 000 de créances en plus
+10 jours de client en plus
+10 jours de CA = 25 000
 BFR = 65 000 + 25 000 = 90 000
 TN = 70 000 - 90 000 = -20 000
-Conclusion : la trésorerie devient négative et l'entreprise bascule sur concours bancaires pour un simple décalage de dix jours.`
+Trésorerie négative pour dix
+jours de retard d'encaissement.`
     },
     {
       id: "at-fin-leviers",
@@ -1608,25 +1621,64 @@ FR = 40 000, BFR = 95 000, donc TN = ...
         { label: "Une limite ou un coût par levier est mentionné", test: /coût|limite|risque|dépendance/i }
       ],
       model: `1. Diagnostic
-FR = 40 000, BFR = 95 000, donc TN = 40 000 - 95 000 = -55 000.
-Les ressources stables financent les immobilisations et 40 000 du cycle, mais le cycle en réclame 95 000 : 55 000 sont financés par des concours bancaires.
-Le BFR est anormal pour une société de services (stocks faibles) : 72 jours de délai client au lieu des 30 jours contractuels. Le poste client est le seul vrai coupable, pas l'exploitation.
+FR = 40 000
+BFR = 95 000
+TN = 40 000 - 95 000 = -55 000
+Les ressources stables couvrent
+les immobilisations et 40 000 du
+cycle, mais le cycle en réclame
+95 000 : 55 000 viennent de la
+banque. BFR anormal pour une
+société de services (stocks
+faibles) : 72 jours de client au
+lieu de 30 contractuels. Le
+poste client est le coupable.
 
-2. Bénéfice et trésorerie négative
-Le résultat est bénéficiaire de 45 000, mais les créances clients ont augmenté d'autant dans l'année : le produit est comptabilisé à la facturation, pas à l'encaissement.
-Un bénéfice est un fait comptable, la trésorerie un fait de date. Ici environ 42 jours de CA dorment chez les clients.
+2. Bénéfice sans trésorerie
+Résultat +45 000, mais +45 000
+de créances dans l'année : le
+produit est comptabilisé à la
+facturation, pas à l'encaissement.
+Un bénéfice est un fait comptable,
+la trésorerie un fait de date.
+Environ 42 jours de CA dorment
+chez les clients.
 
-3. Trois leviers, classés par horizon
-Court terme (0 à 3 mois) : relances systématiques, escompte de 1 à 2 % pour paiement à 10 jours, blocage des prestations des clients en retard.
-Effet attendu : -20 à -30 jours de DSO. Limite : coût commercial de l'escompte, efficacité dépendante de la solvabilité des clients.
+3. Trois leviers
+Court terme, 0 à 3 mois
+Relances systématiques, escompte
+1 à 2 % pour paiement à 10 jours,
+blocage des prestations des
+clients en retard.
+Effet : -20 à -30 jours de DSO.
+Limite : coût commercial de
+l'escompte, dépend de la
+solvabilité des clients.
 
-Moyen terme (3 à 12 mois) : acompte de 30 % à la commande et facturation à l'avancement sur les contrats de service.
-Effet attendu : BFR structurellement plus faible. Limite : acceptation par le client, suppose un contrat et un devis sans faille.
+Moyen terme, 3 à 12 mois
+Acompte de 30 % à la commande et
+facturation à l'avancement sur
+les contrats de service.
+Effet : BFR structurellement
+plus faible.
+Limite : acceptation du client,
+exige un contrat solide.
 
-Structure (au-delà de 12 mois) : emprunt long ou augmentation de capital pour reconstituer le FR, ou affacturage pour convertir les créances en cash.
-Effet attendu : TN redevenue positive. Limite : coût financier, dilution du capital, et l'affacturage traite le symptôme, pas le délai client.
+Structure, au-delà de 12 mois
+Emprunt long ou augmentation de
+capital pour reconstituer le FR,
+ou affacturage pour convertir les
+créances en cash.
+Effet : TN redevenue positive.
+Limite : coût financier, dilution,
+et l'affacturage traite le
+symptôme, pas le délai client.
 
-Conclusion : le découvert de 55 000 n'est pas un problème de banque mais de politique commerciale. Tant que le délai client reste à 72 jours, il réapparaîtra.`
+Le découvert de 55 000 n'est pas
+un problème de banque mais de
+politique commerciale : tant que
+le délai client reste à 72 jours,
+il réapparaîtra.`
     }
   ]
 },

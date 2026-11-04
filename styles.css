@@ -240,6 +240,12 @@ pre.codeblock code {
   padding: 0;
   white-space: pre;
 }
+
+/* Le corrigé d'atelier est de la prose : il doit se replier sur mobile */
+.solution pre.codeblock code { white-space: pre-wrap; overflow-wrap: break-word; }
+@media (max-width: 520px) {
+  .solution pre.codeblock { font-size: var(--fs-xs); padding: var(--space-3); }
+}
 .tok-kw   { color: #e6a06c; }
 .tok-str  { color: #a8cfa0; }
 .tok-com  { color: #7d8894; font-style: italic; }
