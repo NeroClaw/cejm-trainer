@@ -1558,9 +1558,36 @@ Contrôle comptable     = trésorerie actif - trésorerie passif (concours banca
         { label: "BFR = 65 000", test: /65\s?000/ },
         { label: "TN = 5 000 avec le contrôle (15 000 - 10 000)", test: /5\s?000/ },
         { label: "BFR en jours calculé (26 jours)", test: /2[56]\s?jours|26\s?j/i },
-        { label: "Effet des 10 jours clients : TN devient -25 000", test: /-?\s?25\s?000/ },
+        { label: "Effet des 10 jours clients : 25 000 de créances en plus, TN à -20 000", test: /-?\s?2[05]\s?000/ },
         { label: "Le diagnostic conclut sur une marge faible / fragile", test: /fragile|faible|inexistant|tendue/i }
-      ]
+      ],
+      model: `1. Capitaux permanents
+220 000 + 50 000 + 100 000 = 370 000
+
+2. FR
+370 000 - 300 000 = 70 000
+
+3. BFR
+(80 000 + 120 000) - (105 000 + 30 000) = 200 000 - 135 000 = 65 000
+
+4. TN
+FR - BFR = 70 000 - 65 000 = 5 000
+Contrôle : trésorerie actif - concours bancaires = 15 000 - 10 000 = 5 000 ✔
+
+5. BFR en jours de CA
+(65 000 / 900 000) x 360 = 26 jours
+
+Diagnostic en quatre lignes
+- Les ressources stables (370 000) couvrent les immobilisations (300 000) et laissent 70 000 pour le cycle : l'équilibre structurel est respecté.
+- Le cycle immobilise 65 000, soit 26 jours de CA, et il est couvert par le FR.
+- La trésorerie nette n'est positive que de 5 000, moins de deux jours de CA : la marge de sécurité est quasi nulle.
+- La structure est saine mais tendue : aucune marge de manœuvre, tout allongement du délai client passe directement en découvert.
+
+Effet de 10 jours de délai client supplémentaires
+10 jours de CA = (900 000 / 360) x 10 = 25 000 de créances en plus
+BFR = 65 000 + 25 000 = 90 000
+TN = 70 000 - 90 000 = -20 000
+Conclusion : la trésorerie devient négative et l'entreprise bascule sur concours bancaires pour un simple décalage de dix jours.`
     },
     {
       id: "at-fin-leviers",
@@ -1579,7 +1606,27 @@ FR = 40 000, BFR = 95 000, donc TN = ...
         { label: "Un levier sur le FR est proposé (capital, emprunt long, cession)", test: /capital|emprunt|cession|autofinancement/i },
         { label: "Le découvert est présenté comme provisoire, pas comme solution", test: /découvert|concours bancaire/i },
         { label: "Une limite ou un coût par levier est mentionné", test: /coût|limite|risque|dépendance/i }
-      ]
+      ],
+      model: `1. Diagnostic
+FR = 40 000, BFR = 95 000, donc TN = 40 000 - 95 000 = -55 000.
+Les ressources stables financent les immobilisations et 40 000 du cycle, mais le cycle en réclame 95 000 : 55 000 sont financés par des concours bancaires.
+Le BFR est anormal pour une société de services (stocks faibles) : 72 jours de délai client au lieu des 30 jours contractuels. Le poste client est le seul vrai coupable, pas l'exploitation.
+
+2. Bénéfice et trésorerie négative
+Le résultat est bénéficiaire de 45 000, mais les créances clients ont augmenté d'autant dans l'année : le produit est comptabilisé à la facturation, pas à l'encaissement.
+Un bénéfice est un fait comptable, la trésorerie un fait de date. Ici environ 42 jours de CA dorment chez les clients.
+
+3. Trois leviers, classés par horizon
+Court terme (0 à 3 mois) : relances systématiques, escompte de 1 à 2 % pour paiement à 10 jours, blocage des prestations des clients en retard.
+Effet attendu : -20 à -30 jours de DSO. Limite : coût commercial de l'escompte, efficacité dépendante de la solvabilité des clients.
+
+Moyen terme (3 à 12 mois) : acompte de 30 % à la commande et facturation à l'avancement sur les contrats de service.
+Effet attendu : BFR structurellement plus faible. Limite : acceptation par le client, suppose un contrat et un devis sans faille.
+
+Structure (au-delà de 12 mois) : emprunt long ou augmentation de capital pour reconstituer le FR, ou affacturage pour convertir les créances en cash.
+Effet attendu : TN redevenue positive. Limite : coût financier, dilution du capital, et l'affacturage traite le symptôme, pas le délai client.
+
+Conclusion : le découvert de 55 000 n'est pas un problème de banque mais de politique commerciale. Tant que le délai client reste à 72 jours, il réapparaîtra.`
     }
   ]
 },

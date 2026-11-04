@@ -124,7 +124,8 @@
       var node = nodes[i];
       if (node.dataset.painted === "1") continue;
       var lang = node.className.replace("lang-", "");
-      node.innerHTML = highlight(node.textContent, lang);
+      // pseudo-langage "text" : pas de coloration, le contenu est de la prose
+      if (lang !== "text") node.innerHTML = highlight(node.textContent, lang);
       node.dataset.painted = "1";
     }
   }
